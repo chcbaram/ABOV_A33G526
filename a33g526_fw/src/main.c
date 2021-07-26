@@ -14,11 +14,10 @@
 
 int main(void)
 {
+  hwInit();
+  apInit();
 
-  while(1)
-  {
-
-  }
+  apMain();
 
   return 0;
 }
