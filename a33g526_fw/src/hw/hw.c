@@ -16,7 +16,10 @@ bool hwInit(void)
 {
   bspInit();
 
+  logInit();
   ledInit();
+  uartInit();
+  uartOpen(_DEF_UART1, 57600);
 
   return true;
 }

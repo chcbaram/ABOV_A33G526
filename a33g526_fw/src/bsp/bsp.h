@@ -15,7 +15,7 @@
 #include "a33g52x_gpio.h"
 #include "a33g52x_pcu.h"
 #include "a33g52x_nvic.h"
-
+#include "a33g52x_uart.h"
 
 bool bspInit(void);
 
