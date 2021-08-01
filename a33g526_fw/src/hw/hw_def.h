@@ -11,8 +11,8 @@
 #include "bsp.h"
 
 
-#define _DEF_FIRMWATRE_VERSION    "V210726R1"
-#define _DEF_BOARD_NAME           "A33G526"
+#define _DEF_FIRMWATRE_VERSION    "V210801R3"
+#define _DEF_BOARD_NAME           "A33G526_BD"
 
 
 #define _USE_HW_FLASH

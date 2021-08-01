@@ -10,6 +10,31 @@
 
 
 
+extern uint32_t _flash_tag_addr;
+extern uint32_t __isr_vector_addr;
+
+
+__attribute__((section(".tag"))) firm_tag_t firm_tag =
+    {
+        .magic_number = 0xAAAA5555,
+
+        //-- fw info
+        //
+        .addr_tag = (uint32_t)&_flash_tag_addr,
+        .addr_fw  = (uint32_t)&__isr_vector_addr,
+        .size_tag = 1024,
+
+
+        //-- tag info
+        //
+    };
+
+
+__attribute__((section(".version"))) firm_version_t firm_ver =
+    {
+        _DEF_FIRMWATRE_VERSION,
+        _DEF_BOARD_NAME
+    };
 
 
 bool hwInit(void)
@@ -20,7 +45,7 @@ bool hwInit(void)
   ledInit();
   buttonInit();
   uartInit();
-  uartOpen(_DEF_UART1, 57600);
+  uartOpen(_DEF_UART1, 115200);
 
   logPrintf("[ Firmware Begin... ]\r\n");
   logPrintf("Booting..Name \t\t: %s\r\n", _DEF_BOARD_NAME);
