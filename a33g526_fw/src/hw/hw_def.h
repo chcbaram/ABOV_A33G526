@@ -15,6 +15,7 @@
 #define _DEF_BOARD_NAME           "A33G526"
 
 
+#define _USE_HW_FLASH
 
 #define _USE_HW_LED
 #define      HW_LED_MAX_CH          6

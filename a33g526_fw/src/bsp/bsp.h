@@ -16,6 +16,8 @@
 #include "a33g52x_pcu.h"
 #include "a33g52x_nvic.h"
 #include "a33g52x_uart.h"
+#include "a33g52x_flash.h"
+
 
 bool bspInit(void);
 

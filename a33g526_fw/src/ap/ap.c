@@ -34,14 +34,53 @@ void apMain(void)
       ledToggle(_DEF_LED5);
     }
 
-    if (buttonGetPressed(_DEF_BUTTON1) == true)
+    if (uartAvailable(_DEF_UART1) > 0)
     {
-      uartPrintf(_DEF_UART1, "pressed\n");
+      uint8_t rx_data;
+
+      rx_data = uartRead(_DEF_UART1);
+
+      if (rx_data == 'm')
+      {
+        logPrintf("m menu\n");
+        logPrintf("e erase\n");
+        logPrintf("w write\n");
+        logPrintf("s show\n");
+      }
+
+      if (rx_data == 'e')
+      {
+        logPrintf("erase..");
+        flashErase(0x00000000, 256);
+        logPrintf("OK\n");
+      }
+
+      if (rx_data == 'w')
+      {
+        uint8_t w_data[256];
+
+        for (int i=0; i<256; i++)
+        {
+          w_data[i] = i;
+        }
+
+        logPrintf("write..");
+        flashWrite(0x00000000, w_data, 256);
+        logPrintf("OK\n");
+      }
+
+      if (rx_data == 's')
+      {
+        uint8_t r_data[256];
+
+
+        flashRead(0, r_data, 256);
+
+        for (int i=0; i<256; i++)
+        {
+          logPrintf("%d : %d\n", i, r_data[i]);
+        }
+      }
     }
-    else
-    {
-      uartPrintf(_DEF_UART1, "released\n");
-    }
-    delay(100);
   }
 }
