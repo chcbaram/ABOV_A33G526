@@ -16,6 +16,7 @@
 #include "log.h"
 #include "button.h"
 #include "flash.h"
+#include "cli.h"
 
 
 bool hwInit(void);

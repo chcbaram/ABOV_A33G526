@@ -41,6 +41,7 @@ bool hwInit(void)
 {
   bspInit();
 
+  cliInit();
   logInit();
   ledInit();
   buttonInit();
